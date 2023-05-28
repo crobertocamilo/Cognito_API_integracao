@@ -95,7 +95,7 @@ Vinculando o autorizador ao método POST. Repetir para os outros métodos.
 
 <br></br>
 
-Com o autorizador vinculado, refeça o *deploy* da API clicando no botão *Actions*. A partir de então, o API Gateway não permitirá que um usuário insira novos dados na tabela, sendo necessário que ele se cadastre no Cognito:
+Com o autorizador vinculado, refaça o *deploy* da API clicando no botão *Actions*. A partir de então, o API Gateway não mais permitirá que um usuário insira novos dados na tabela, sendo necessário que ele se antes cadastre no Cognito.
 
 <div align="center">
   <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/post_bloqueado.png?raw=true" alt="Erro inserir item" width=56%/>
@@ -108,7 +108,7 @@ Erro ao tentar inserir um item na tabela - Acesso bloqueado.
 <br></br>
 #### **> Acessando a API no Postman**
 
-Para ter acesso novamente à API, é necessário gerar um *token* de acesso no Postam. A imagem abaixo mostra um exemplo de como os campos devem ser preenchidos os dados configurados na criação da *user pool* no Cognito. 
+Para ter acesso novamente à API, é necessário gerar um *token* de acesso no Postan. A imagem abaixo mostra um exemplo de como os campos devem ser preenchidos os dados configurados na criação da *user pool* no Cognito. 
 
 <div align="center">
   <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/integracao_postman.png?raw=true" alt="Autorizador" width=55%/>
@@ -121,17 +121,44 @@ Gerando um token para acesso à API no Postman.
 <br></br>
 #### **> Casdatrando um usário no Cognito**
 
-Para concluir a geração do *token* de acesso, será necessário cadastrar um usuário no Cognito, informando um email e uma senha (os critério para a definição da senha forma definidos na criação da *user pool*), e em seguida confirmando o código de verificação recebido no email:
+Para concluir a geração do *token* de acesso, será necessário cadastrar um usuário no Cognito, informando um email e uma senha (os critério para a definição da senha foram definidos na criação da *user pool*), e em seguida confirmando o código de verificação recebido no email:
 
+<table>
+  <tr>
+    <td>
+      <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/cognito_login.png?raw=true" alt="Modificando registro 1" width="80%">
+    </td>
+    <td>
+      <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/cognito_login2.png?raw=true" alt="Modificando registro 2" width="80%">
+    </td>
+  </tr>
+</table>
+<div align="center">
+Cadastrando um usuário no Cognito e validando a conta.
+</div>
 
+<br></br>
+
+Após o usuário ser validado, será concluída a geração do *token* no Postman. Copie o código gerado, e retorne à aba de POST em que a modificação na tabela havia sido bloqueada. Na seção *Autorization* da aba, selecione uma autenticação do tipo *OAuth 2.0" e cole o token gerado na etapa anterior:
 
 <div align="center">
-  <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/integracao_postman.png?raw=true" alt="Autorizador" width=55%/>
+  <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/postman_token.png?raw=true" alt="Configurando token" width=65%/>
 </div>
 
 <div align="center">
-Gerando um token para acesso à API no Postman.
+Configurando sua autorização no Postman.
 </div>
+
+<br></br>
+Enfim, tente outra vez inserir um novo registro na tabela. Como agora você é um usário autorizado, o Cognito irá permitir o acesso à API e será possível realizar alterações na tabela!
+
+<div align="center">
+  <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/post_autorizado.png?raw=true" alt="Autorizador" width=55%/>
+</div>
+
+<div align="center">
+Novo registro inserido com sucesso na tabela.
+
 
 
 
