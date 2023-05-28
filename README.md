@@ -8,7 +8,7 @@ Evento promovido pela [Digital Innovation One - DIO](https://www.dio.me/en), com
 
 --- 
 ## Desafio
-**Adicionando Segurança em APIs na AWS com Amazon Cognito**
+**Adicionando Segurança em APIs na AWS com Amazon Cognito.**
 
 ---
 ### Objetivo
@@ -38,8 +38,6 @@ Requisitos:
 * Serverless Framework instalado (tutorial oficial [aqui](https://www.serverless.com/framework/docs/tutorial));
 * AWS-CLI [instalado](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) e configurado com as credenciais da conta (Access Key e Secret Key) na AWS. Para mais informações, clique [aqui](https://www.serverless.com/framework/docs/providers/aws/guide/credentials/);
 * Instalar o [**Postman**](https://www.postman.com/) para interação com as rotas da API.
-
-<br></br>
 
 Para realizar o *deploy* da API na AWS, clone este repositório e acesse a pasta raiz pelo terminal. Digite:
 
@@ -95,7 +93,7 @@ Vinculando o autorizador ao método POST. Repetir para os outros métodos.
 
 <br></br>
 
-Com o autorizador vinculado, refaça o *deploy* da API clicando no botão *Actions*. A partir de então, o API Gateway não mais permitirá que um usuário insira novos dados na tabela, sendo necessário que ele se antes cadastre no Cognito.
+Com o autorizador vinculado, refaça o *deploy* da API clicando no botão *Actions*. A partir de então, o API Gateway não mais permitirá que um usuário insira novos dados na tabela, sendo necessário que ele antes se cadastre no Cognito.
 
 <div align="center">
   <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/post_bloqueado.png?raw=true" alt="Erro inserir item" width=56%/>
@@ -125,11 +123,11 @@ Para concluir a geração do *token* de acesso, será necessário cadastrar um u
 
 <table>
   <tr>
-    <td>
-      <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/cognito_login.png?raw=true" alt="Modificando registro 1" width="80%">
+    <td style="text-align: center;">
+      <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/cognito_login.png?raw=true" alt="Modificando registro 1" width="70%">
     </td>
-    <td>
-      <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/cognito_login2.png?raw=true" alt="Modificando registro 2" width="80%">
+    <td style="text-align: center;">
+      <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/cognito_login2.png?raw=true" alt="Modificando registro 2" width="60%">
     </td>
   </tr>
 </table>
@@ -139,7 +137,7 @@ Cadastrando um usuário no Cognito e validando a conta.
 
 <br></br>
 
-Após o usuário ser validado, será concluída a geração do *token* no Postman. Copie o código gerado, e retorne à aba de POST em que a modificação na tabela havia sido bloqueada. Na seção *Autorization* da aba, selecione uma autenticação do tipo *OAuth 2.0" e cole o token gerado na etapa anterior:
+Após o usuário ser validado, será concluída a geração do *token* no Postman. Copie o código gerado, e retorne à aba de POST em que a modificação na tabela havia sido bloqueada. Na seção *Autorization* da aba, selecione uma autenticação do tipo *OAuth 2.0* e cole o *token* gerado na etapa anterior:
 
 <div align="center">
   <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/postman_token.png?raw=true" alt="Configurando token" width=65%/>
@@ -157,7 +155,7 @@ Enfim, tente outra vez inserir um novo registro na tabela. Como agora você é u
 </div>
 
 <div align="center">
-Novo registro inserido com sucesso na tabela.
+Novo registro inserido com sucesso na tabela - Acesso autorizado!
 
 
 
