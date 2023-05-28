@@ -121,16 +121,10 @@ Gerando um token para acesso à API no Postman.
 
 Para concluir a geração do *token* de acesso, será necessário cadastrar um usuário no Cognito, informando um email e uma senha (os critério para a definição da senha foram definidos na criação da *user pool*), e em seguida confirmando o código de verificação recebido no email:
 
-<table>
-  <tr>
-    <td style="text-align: center">
-      <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/cognito_login.png?raw=true" alt="Modificando registro 1" width="70%">
-    </td>
-    <td style="text-align: center">
-      <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/cognito_login2.png?raw=true" alt="Modificando registro 2" width="60%">
-    </td>
-  </tr>
-</table>
+<div align="center">
+  <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/login_cognito.png?raw=true" alt="Autorizador" width=55%/>
+</div>
+
 <div align="center">
 Cadastrando um usuário no Cognito e validando a conta.
 </div>
