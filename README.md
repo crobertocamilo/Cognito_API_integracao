@@ -8,18 +8,18 @@ Evento promovido pela [Digital Innovation One - DIO](https://www.dio.me/en), com
 
 --- 
 ## Desafio
-**Adicionando Segurança em APIs na AWS com Amazon Cognito.**
+**Adicionando Segurança em APIs na AWS através do Cognito.**
 
 ---
 ### Objetivo
 
-Utilizar o AWS Cognito para oferecer autenticação, autorização e gerenciamento de usuários que acessam uma API.
+Utilizar o AWS Cognito para oferecer autenticação, autorização e gerenciamento de usuários que acessam uma API. Etapas a serem observadas:
 
 * Utilizar os serviços Amazon Cognito, DynamoDB, API Gateway e AWS Lambda;
 * Criar uma API REST no Amazon API Gateway;
 * Criar tabela no Amazon DynamoDB;
 * Criar funções no AWS Lambda;
-* Integrar o API Gateway com o Lambda *backend*;
+* Integrar o API Gateway com o Lambda *back-end*;
 * Utilizar a ferramenta no POSTMAN;
 * Criar um autorizador do Amazon Cognito para uma API REST no Amazon API Gateway.
 
@@ -28,7 +28,7 @@ Utilizar o AWS Cognito para oferecer autenticação, autorização e gerenciamen
 
 A API utilizada neste projeto foi implementada utilizando o **Serverless Framework** e consiste na criação de uma tabela no **DynamoDB** e funções **Lambda**, integradas ao **API Gateway** para realizar operações sobre a tabela (inserir item, consultar, atualizar e deletar).
 
-A criação de toda a infraestrutura da API é automática, e foi baseada no projeto que desenvolvi [neste repositório](https://github.com/crobertocamilo/Serverless-CRUD-AWS-Python). Se desejar trocar o nome/tema da tabela, antes do *deploy*, renomeie o nome da tabela *Paises* e de sua chave *Pais*, no arquivo [serveless.yml](https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/serverless.yml) e nas funções python da pasta [src](https://github.com/crobertocamilo/Cognito_API_integracao/tree/main/src), para os nomes que desejar. 
+A criação de toda a infraestrutura da API é automática e foi baseada no projeto que desenvolvi [neste repositório](https://github.com/crobertocamilo/Serverless-CRUD-AWS-Python). Se desejar trocar o nome/tema da tabela, renomeie o nome da tabela *Paises* e de sua chave *Pais*, no arquivo [serveless.yml](https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/serverless.yml) e nas funções python da pasta [src](https://github.com/crobertocamilo/Cognito_API_integracao/tree/main/src), para os nomes que desejar. 
 
 ---
 ### Implementando a solução:
@@ -37,7 +37,7 @@ Requisitos:
 * Criar (ou possuir) uma conta na [AWS](https://aws.amazon.com/pt/);
 * Serverless Framework instalado (tutorial oficial [aqui](https://www.serverless.com/framework/docs/tutorial));
 * AWS-CLI [instalado](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) e configurado com as credenciais da conta (Access Key e Secret Key) na AWS. Para mais informações, clique [aqui](https://www.serverless.com/framework/docs/providers/aws/guide/credentials/);
-* Instalar o [**Postman**](https://www.postman.com/) para interação com as rotas da API.
+* Instalar o [Postman](https://www.postman.com/) para interação com as rotas da API.
 
 Para realizar o *deploy* da API na AWS, clone este repositório e acesse a pasta raiz pelo terminal. Digite:
 
@@ -53,7 +53,7 @@ Os links mostrados na imagem são apenas exemplos e não estão mais disponívei
 
 <br></br>
 
-A manipulação da tabela criada pode ser feita através do Postman, conforme exemplificado [aqui](https://github.com/crobertocamilo/Serverless-CRUD-AWS-Python), mas respeitando o nome da chave primária (neste projeto, *"Pais"*). Como o DynamoDB é NoSQL, não é necessário que todos os registros da tabela tenham os mesmos atributos - o único campo obrigatório é a chave primária (*partition key*).
+A manipulação da tabela criada pode ser feita através do **Postman**, conforme exemplificado [aqui](https://github.com/crobertocamilo/Serverless-CRUD-AWS-Python), mas respeitando o nome da chave primária (neste projeto, *"Pais"*). Como o DynamoDB é NoSQL, não é necessário que todos os registros da tabela tenham os mesmos atributos - o único campo obrigatório é a chave primária (*partition key*).
 
 <br></br>
 #### **> Criando um autenticador no AWS Cognito**
@@ -117,7 +117,7 @@ Gerando um token para acesso à API no Postman.
 </div>
 
 <br></br>
-#### **> Casdatrando um usário no Cognito**
+#### **> Casdatrando um usuário no Cognito**
 
 Para concluir a geração do *token* de acesso, será necessário cadastrar um usuário no Cognito, informando um email e uma senha (os critério para a definição da senha foram definidos na criação da *user pool*), e em seguida confirmando o código de verificação recebido no email:
 
