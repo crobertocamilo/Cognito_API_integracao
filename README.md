@@ -123,10 +123,10 @@ Para concluir a geração do *token* de acesso, será necessário cadastrar um u
 
 <table>
   <tr>
-    <td style="text-align: center;">
+    <td style="text-align: center">
       <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/cognito_login.png?raw=true" alt="Modificando registro 1" width="70%">
     </td>
-    <td style="text-align: center;">
+    <td style="text-align: center">
       <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/cognito_login2.png?raw=true" alt="Modificando registro 2" width="60%">
     </td>
   </tr>
