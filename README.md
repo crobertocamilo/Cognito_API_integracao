@@ -34,21 +34,14 @@ A criação de toda a infraestrutura da API é automática, e foi baseada no pro
 ### Implementando a solução:
 
 Requisitos:
+* Criar (ou possuir) uma conta na [AWS](https://aws.amazon.com/pt/);
 * Serverless Framework instalado (tutorial oficial [aqui](https://www.serverless.com/framework/docs/tutorial));
-* AWS-CLI [instalado](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) e configurado com as credenciais da conta (Access Key e Secret Key) na AWS. Para mais informações, clique [aqui](https://www.serverless.com/framework/docs/providers/aws/guide/credentials/).
+* AWS-CLI [instalado](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) e configurado com as credenciais da conta (Access Key e Secret Key) na AWS. Para mais informações, clique [aqui](https://www.serverless.com/framework/docs/providers/aws/guide/credentials/);
+* Instalar o [**Postman**](https://www.postman.com/) para interação com as rotas da API.
 
 <br></br>
 
----
-### Implementando a solução:
-
-Requisitos:
-* Serverless Framework instalado (tutorial oficial [aqui](https://www.serverless.com/framework/docs/tutorial));
-* AWS-CLI [instalado](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) e configurado com as credenciais da conta (Access Key e Secret Key) na AWS. Para mais informações, clique [aqui](https://www.serverless.com/framework/docs/providers/aws/guide/credentials/).
-
-<br></br>
-
-Para o *deploy* deste projeto na AWS, clone este repositório e acesse a pasta raiz pelo terminal. Digite:
+Para realizar o *deploy* da API na AWS, clone este repositório e acesse a pasta raiz pelo terminal. Digite:
 
   `serverless deploy`
 
@@ -57,8 +50,90 @@ Se a estrutura de serviços for construída com sucesso em sua conta da AWS, ser
 Os links mostrados na imagem são apenas exemplos e não estão mais disponíveis.
 
 <div align="center">
-  <img src="https://github.com/crobertocamilo/Serverless-CRUD-AWS-Python/blob/main/assets/serverless_deploy.png?raw=true" alt="Estrutura de serviços na AWS" width=70%/>
+  <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/serverless_deploy.png?raw=true" alt="Estrutura de serviços na AWS" width=65%/>
 </div>
+
+<br></br>
+
+A manipulação da tabela criada pode ser feita através do Postman, conforme exemplificado [aqui](https://github.com/crobertocamilo/Serverless-CRUD-AWS-Python), mas respeitando o nome da chave primária (neste projeto, *"Pais"*). Como o DynamoDB é NoSQL, não é necessário que todos os registros da tabela tenham os mesmos atributos - o único campo obrigatório é a chave primária (*partition key*).
+
+<br></br>
+#### **> Criando um autenticador no AWS Cognito**
+
+Para implementar autenticação e gerenciamento de usuários no acesso à API é possível criar um autenticador (*user pool*) no **Cognito**. O passo a passo está documentado neste pdf.
+
+<div align="center">
+  <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/cognito_user_pool_criada.png?raw=true" alt="User pool criada no Cognito" width=65%/>
+</div>
+
+<div align="center">
+User pool criada no Cognito.
+</div>
+
+<br></br>
+#### **> Integrando o autenticador à API**
+
+Em seguida, é necessário fazer a integração da *user pool* criada com a API criando um autorizador no API Gateway e o vinculando aos métodos que terão restrição de acesso, conforme exemplificado nas imagens abaixo:
+
+<div align="center">
+  <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/integracao_api_gateway.png?raw=true" alt="Autorizador" width=55%/>
+</div>
+
+<div align="center">
+Criando um autorizador no API Gateway.
+</div>
+
+<br></br>
+
+<div align="center">
+  <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/integracao_api_gateway2.png?raw=true" alt="Vinculando o autorizador" width=56%/>
+</div>
+
+<div align="center">
+Vinculando o autorizador ao método POST. Repetir para os outros métodos.
+</div>
+
+<br></br>
+
+Com o autorizador vinculado, refeça o *deploy* da API clicando no botão *Actions*. A partir de então, o API Gateway não permitirá que um usuário insira novos dados na tabela, sendo necessário que ele se cadastre no Cognito:
+
+<div align="center">
+  <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/post_bloqueado.png?raw=true" alt="Erro inserir item" width=56%/>
+</div>
+
+<div align="center">
+Erro ao tentar inserir um item na tabela - Acesso bloqueado.
+</div>
+
+<br></br>
+#### **> Acessando a API no Postman**
+
+Para ter acesso novamente à API, é necessário gerar um *token* de acesso no Postam. A imagem abaixo mostra um exemplo de como os campos devem ser preenchidos os dados configurados na criação da *user pool* no Cognito. 
+
+<div align="center">
+  <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/integracao_postman.png?raw=true" alt="Autorizador" width=55%/>
+</div>
+
+<div align="center">
+Gerando um token para acesso à API no Postman.
+</div>
+
+<br></br>
+#### **> Casdatrando um usário no Cognito**
+
+Para concluir a geração do *token* de acesso, será necessário cadastrar um usuário no Cognito, informando um email e uma senha (os critério para a definição da senha forma definidos na criação da *user pool*), e em seguida confirmando o código de verificação recebido no email:
+
+
+
+<div align="center">
+  <img src="https://github.com/crobertocamilo/Cognito_API_integracao/blob/main/assets/integracao_postman.png?raw=true" alt="Autorizador" width=55%/>
+</div>
+
+<div align="center">
+Gerando um token para acesso à API no Postman.
+</div>
+
+
 
 
 
